@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
 import pandas as pd
-from time import sleep, time
+from time import sleep
 
 def run(playwright,url):
      browser = playwright.chromium.launch(headless=False)
@@ -57,8 +57,7 @@ def save_to_csv(data:list):
           if data_asin:
                frame.append([data_asin,title,price,original_price,rating,link])
      df = pd.DataFrame(data, columns=["data_asin", "title", "price","original_price","rating","link"])
-     from time import time
-     df.to_csv(f"{int(time())}.csv", index=False)
+     df.to_csv(f"amazon_rtx_3060_price.csv", index=False)
 
 def main():
      from lst import items
